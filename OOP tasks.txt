@@ -1,0 +1,175 @@
+'''Модуль 10. Объектно-ориентированное
+программирование
+Тема: Множественное наследование.
+Полиморфизм. Реализация
+магических методов. Часть 6
+Задание 1
+Создать базовый класс Фигура с методом для подсчета
+площади. Создать производные классы: прямоугольник,
+круг, прямоугольный треугольник, трапеция со своими
+методами для подсчета площади. '''
+class Figure:
+
+    def __init__(self,lenght,width):
+        self.lenght=lenght
+        self.width=width
+
+    def __str__(self):
+        return f'lenght  = {self.lenght} \n' \
+               f'width = {self.width} \n' \
+
+
+class Rectangle(Figure):
+    def rectan(self,lenght,width):
+        square_rectangle=self.lenght*self.width
+        return print('Square of rectangle = ', square_rectangle)
+class Сircle(Figure):
+    pi = 3.14
+    def __init__(self,radius):
+        self.radius=radius
+    def circle_square(self,radius):
+        square_circle= self.pi* self.radius**2
+        return print('Square of circle = ',square_circle)
+class Right_triangle(Figure):
+    def trian_square(self):
+        square_triangle=(self.lenght*self.width)/2
+        return print('Square of right triangle = ',square_triangle )
+
+class Trapezoid(Figure):
+    def __init__(self,lenght,width,height):
+        self.height=height
+        self.lenght=lenght
+        self.width=width
+    def trapex_square(self):
+        square_trapez=((self.lenght+self.width)/2)*self.height
+        return print('Square of trapezoid = ',square_trapez)
+
+figure_rectangle=Rectangle(2,5)
+figure_rectangle.rectan(2,5)
+triangle_right=Right_triangle(3,3)
+triangle_right.trian_square()
+figure_circle=Сircle(5)
+figure_circle.circle_square(5)
+trapezoid=Trapezoid(2,4,5)
+trapezoid.trapex_square()
+
+'''Задание 2
+Для классов из задания 1 нужно переопределить магические методы int(возвращает площадь) и str (возвращает
+информацию о фигуре).'''
+class Figure_2:
+    formula={'rectangle':'a*b','right triangle':'(a*b)/2'}
+    def __init__(self,geometry_figure,lenght,width):
+        self.geometry_figure=geometry_figure
+        self.lenght=lenght
+        self.width=width
+
+    def __int__(self):
+        if self.geometry_figure=='rectangle':
+            square=self.lenght*self.width
+        if self.geometry_figure=='right triangle':
+            square=(self.lenght*self.width)/2
+    def __str__(self):
+        return f'The formula of square of {self.geometry_figure} is {Figure_2.formula[self.geometry_figure]}'
+
+find_formula=Figure_2('rectangle',5,4)
+print(find_formula)
+find_formula=Figure_2('right triangle',4,4)
+print(find_formula)
+'''Задание 3
+Создайте базовый класс Shape для рисования плоских
+фигур.
+Определите методы:
+■ Show() — вывод на экран информации о фигуре;
+■ Save() — сохранение фигуры в файл;
+■ Load() — считывание фигуры из файла.
+Определите производные классы:
+■ Square — квадрат, который характеризуется координатами левого верхнего угла и длиной стороны;
+■ Rectangle — прямоугольник с заданными координатами верхнего левого угла и размерами;
+■ Circle — окружность с заданными координатами центра и радиусом;
+■ Ellipse — эллипс с заданными координатами верхнего
+угла описанного вокруг него прямоугольника со сторонами, параллельными осям координат, и размерами
+этого прямоугольника.
+Создайте список фигур, сохраните фигуры в файл,
+загрузите в другой список и отобразите информацию о
+каждой из фигур.'''
+
+
+class Shape:
+    all_figure = {'circle': 'Circle', 'ellipse': 'Ellips', 'square': 'Square', 'rectangle': 'Rectangle'}
+
+    def show():
+        for element in Shape.all_figure:
+            print(element)
+
+    def show_more():
+        l = [Circle.display_3(), Square.display_1(), Ellipse.display_4(), Rectangle.display_2()]
+        print(l)
+        return Circle.display_3(), Square.display_1(), Ellipse.display_4(), Rectangle.display_2()
+
+    def save():
+        f = open('file.txt', 'wt')
+        for i in Shape.all_figure:
+            f.write(i)
+            f.write('\n')
+        print('ok')
+
+    def load():
+        new_list = []
+        files = open('file.txt', 'rt')
+        for file in files:
+            file = file[:-1]
+            new_list.append(file)
+        print(new_list)
+
+
+class Square(Shape):
+    lenght = 5
+    location = {'x': 254, 'y': 25, 'z': 100}
+
+    def display_1():
+        return print(f'Position of square is {Square.location}\n'
+                     f'lenght = {Square.lenght}')
+
+
+class Rectangle(Shape):
+    lenght = 25
+    width = 14
+    location = {'x': 140, 'y': 12, 'z': 141}
+
+    def display_2():
+        return print(f'Position of rectangle is {Rectangle.location}\n'
+                     f'lenght = {Rectangle.lenght}\n'
+                     f'width = {Rectangle.width}')
+
+
+class Circle(Shape):
+    radius = 15
+    location = {'x': 140, 'y': 12, 'z': 141}
+
+    def display_3():
+        return print(f'Information about circle is: \n'
+                     f'radius = {Circle.radius} \n'
+                     f'location = {Circle.location}')
+
+
+class Ellipse(Shape):
+    lenght_rectangle = 14
+    width_rectangle = 5
+    axes_parallel = 'yes'
+    location = {'x': 140, 'y': 12, 'z': 141}
+
+    def display_4():
+        return print(f'Information about ellipse is: \n'
+                     f'width of rectangle = {Ellipse.width_rectangle} \n'
+                     f'lenght of rextangle = {Ellipse.width_rectangle}\n'
+                     f'are axes parallel = {Ellipse.axes_parallel}\n'
+                     f'location = {Circle.location}')
+
+
+Square.display_1()
+Circle.display_3()
+Ellipse.display_4()
+Shape.show()
+Shape.save()
+Shape.load()
+Shape.show_more()
