@@ -1,0 +1,111 @@
+'''Тема: Классы. Объекты
+Задание 1
+Реализуйте класс «Автомобиль». Необходимо хранить
+в полях класса: название модели, год выпуска, производителя, объем двигателя, цвет машины, цену.
+Реализуйте
+методы класса для ввода данных, вывода данных,
+реализуйте доступ к отдельным полям через методы класса.
+'''
+
+class Auto:
+
+    def __init__(self, model, year, producer, engine_power, color, price):
+        self.model = model
+        self.year = year
+        self.producer = producer
+        self.engine_power = engine_power
+        self.color = color
+        self.price = price
+        price = int
+
+    def __str__(self):
+        return f'Model:{self.model} Year of production: {self.year} The factory is: {self.producer} Engine power:{self.engine_power}' \
+               f'Color: {self.color} The price is: {self.price}'
+
+    def change_parameters(self, new_model, new_year, new_engine, new_color):
+        self.model = new_model
+        self.year = new_year
+        self.engine_power = new_engine
+        self.color = new_color
+
+        if new_model:
+            self.price += 50
+            print(f'Model:{self.model} The price is: {self.price}')
+
+    def check_info(self):
+        print(
+            f'Model:{self.model} Year of production: {self.year} The factory is: {self.producer} Engine power:{self.engine_power} Color: {self.color} The price is: {self.price}')
+
+
+bmw = Auto('series_3', '1998', 'Bayerische Motoren Werke AG', '1.6', 'red', 3000)
+print(bmw.year)
+bmw.check_info()
+bmw.change_parameters('series 5', '1999', '1.8', 'black')
+bmw.check_info()
+
+'''Задание 2
+Реализуйте класс «Книга». Необходимо хранить в
+полях класса: название книги, год выпуска, издателя,
+жанр, автора, цену. Реализуйте методы класса для ввода
+данных, вывода данных, реализуйте доступ к отдельным
+полям через методы класса.'''
+
+
+class Book:
+    def __init__(self, name, year, publisher, style, author, price):
+        self.name = name
+        self.year = year
+        self.publisher = publisher
+        self.style = style
+        self.author = author
+        self.price = price
+
+    def __str__(self):
+        print(f'{self.name} \n', f'Author - {self.author} \n year - {self.year} '
+                                 f'Publisher -{self.publisher} Book style - {self.style}'
+                                 f'Price in hrivnas - {self.price}')
+
+    def change_author(self, new_author):
+        self.author = new_author
+        print('The author was changed')
+
+    def change_name(self):
+        new_name = input('Enter new name: ')
+        self.name = new_name
+
+
+read = Book('The self-taught programmer', '2018', 'Bombora', 'Computer Science', 'Кори Альтхофф', '1000')
+read.change_name()
+print(read.name)
+
+'''Задание 3
+Реализуйте класс «Стадион». Необходимо хранить в
+полях класса: название стадиона, дату открытия, страну,
+город, вместимость. Реализуйте методы класса для ввода
+данных, вывода данных, реализуйте доступ к отдельным
+полям через методы класса.'''
+
+
+class Stadion:
+    def __init__(self, name, year, country, city, number_of_audience):
+        self.name = name
+        self.year = year
+        self.country = country
+        self.city = city
+        self.number_of_audience = number_of_audience
+
+    def __str__(self):
+        f'{self.name},{self.year},{self.country},{self.city},{self.number_of_audience}'
+
+    def change_number_of_audience(self):
+        self.number_of_audience += 180
+        print(self.number_of_audience)
+
+    def full_name(self):
+        self.name = self.name + self.year
+        print(f'Full name of stadion is {self.name}')
+
+
+olympic = Stadion('Olympic', '2012', 'Ukraine', 'Donetsk', 2000)
+olympic.change_number_of_audience()
+olympic.full_name()
