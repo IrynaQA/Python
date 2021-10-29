@@ -1,0 +1,159 @@
+'''Тема: Файлы. Часть 1
+Задание 1
+Дано два текстовых файла. Выяснить, совпадают ли
+их строки. Если нет, то вывести несовпадающую строку
+из каждого файла.'''
+
+# file1 = open('file_1.txt','rt')
+# file2 = open('file_2.txt','rt')
+# a = file1.readlines()
+# b = file2.readlines()
+# d_list_for_a = []
+# list_common =[]
+# for i in a:
+#     i = i[:-1]
+#     d_list_for_a.append(i)
+#
+# for j in b:
+#     j = j[:-1]
+#
+#     if j not in d_list_for_a:
+#         list_common.append(j)
+#
+# print(list_common)
+# print(len(list_common))
+# file1 = open('file_1.txt','rt')
+# file2 = open('file_2.txt','rt')
+# a = file1.readlines()
+# b = file2.readlines()
+# file1_to_file2 = []
+#
+# while a and b:
+#     for i in a:
+#         i = i[:-1]
+#         #print(i)
+#         for j in b:
+#             j = j[:-1]
+#             #print(j)
+#             if i == j:
+#                 file1_to_file2.append(i)
+#     break
+# # Выводиться строка, элементы списка совпадают у двух файлов
+# print(list(set(file1_to_file2)))
+# print(len(file1_to_file2))
+
+'''Задание 2
+Дан текстовый файл. Необходимо создать новый файл
+и записать в него следующую статистику по исходному
+файлу:
+■ Количество символов;
+■ Количество строк;
+■ Количество гласных букв;
+■ Количество согласных букв;
+■ Количество цифр.'''
+# u = open('file_count_1.txt','rt')
+# t = u.readlines()
+# num = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+# vovel = ['a','o','e','y','u','i']
+# vovel1 = []
+# num1 = []
+# count_str = 0
+# symbol = ['*', '/', ' ', '+', '-', '_', '"', "'"]
+# symbol1 = []
+# vovel_not = []
+# count_symb = 0
+# while t:
+#     for i in t:
+#         count_str += 1
+#         i = i[:-1]
+#         for j in i:
+#             count_symb += 1
+#             if j in num:
+#                 num1.append(j)
+#             elif j in vovel:
+#                 vovel1.append(j)
+#             elif j in symbol:
+#                 if j != ' ':
+#                     symbol1.append(j)
+#
+#             else:
+#                 vovel_not.append(j)
+#
+#     break
+#
+# print(len(num1),'- number of digits')
+# print((count_symb), '- symbols')
+# print(len(vovel_not), '- consonants')
+# print(len(vovel1),'- vowels')
+# print(len(symbol1),"- special symbols")
+# print((count_str),' strings')
+#
+# u.close()
+
+'''Задание 3
+Дан текстовый файл. Удалить из него последнюю
+строку. Результат записать в другой файл.'''
+# a = open('file_1.txt','rt')
+# b = a.readlines()
+# last_line = b[-1]
+# print(last_line)
+# f = open('file_3.txt','wt')
+# f.write(last_line)
+#a.close()
+
+'''Задание 4
+Дан текстовый файл. Найти длину самой длинной
+строки.'''
+# file1 = open('file_1.txt','rt')
+# a = file1.readlines()
+# l = 0
+# for i in a:
+#     s = (len(i))
+#     if s >= l:
+#         l = s
+#         s = i
+# print('The largest string has', l, 'symbols')
+# print(s)
+# file1.close()
+
+'''Задание 5
+Дан текстовый файл. Посчитать сколько раз в нем
+встречается заданное пользователем слово.'''
+#
+# file1 = open('file_1.txt','rt')
+# a = file1.readlines()
+# word = input("Enter word: ")
+#
+# count = 0
+# for i in a:
+#     i = i[:-1]
+#     if word in i:
+#         print(word)
+#         count += 1
+# if count > 1:
+#     print("This word",count,"times in text")
+# else:
+#     print("This word",count,"time in text")
+# file1.close()
+
+'''Задание 6
+Дан текстовый файл. Найти и заменить в нем заданное слово. Что искать и на что заменять определяется
+пользователем.'''
+file1 = open('file_1.txt','rt')
+a = file1.readlines()
+print(a)
+word = ''
+while word+'\n' not in a:
+    word = input("Enter word to find: " )
+new_replace = input("Enter word to replace: ")
+for i in range(len(a)):
+    if a[i] == word+'\n':
+        a[i] = new_replace +'\n'
+print(a)
+file1.close()
+file1 = open('file_1.txt','wt')
+for elem in a:
+     file1.write(elem)
+file1.close()
+
+
