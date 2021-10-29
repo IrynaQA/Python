@@ -1,0 +1,163 @@
+'''Тема: Наследование
+Задание 1
+Создайте класс Device, который содержит информацию об устройстве.
+С помощью механизма наследования, реализуйте класс
+CoffeeMachine (содержит информацию о кофемашине),
+класс Blender (содержит информацию о блендере), класс
+MeatGrinder (содержит информацию о мясорубке).
+Каждый из классов должен содержать необходимые
+для работы методы.'''
+# class Device:
+#     price = 1000
+#     seller='manager'
+#     def __init__(self,material,motor, storage):
+#         self.material=material
+#         self.motor=motor
+#         self.storage= storage
+#     def __str__(self):
+#         return f'Material of device: {self.material}, Power of motor: {self.motor},' \
+#                f' City of storage: {self.storage} '
+#     def check_price(self):
+#         return f'Current price: {self.price}'
+# class CoffeeMachine(Device):
+#     tank_capacity=1.2
+#     types_of_pods='38'
+#     def incr_price(self):
+#         self.price+=100
+#         return f'Price: {self.price}'
+#     def change_types_of_pods(self,new_pods):
+#         self.types_of_pods=new_pods
+#     def incr_tank_capacity(self):
+#         self.tank_capacity+=0.2
+#
+# class Blender(Device):
+#     blending_speed='3'
+#     capacity=2.5
+#     def decr_capacity(self):
+#         self.capacity=self.capacity - 0.3
+#         return f'The capacity was decreased to: {self.capacity}'
+#     def check_speed(self):
+#         return f'You choose blender with blending speed: {self.blending_speed}'
+#     def chan_speed(self,new_speed):
+#         self.blending_speed=new_speed
+# class MeatGrinder(Device):
+#     item_weight='12'
+#     def sale(self):
+#         self.price-=50
+#         return f'Your price after sale: {self.price}'
+#     def change_weight(self,new_weight):
+#         self.item_weight=new_weight
+#
+# astoria=CoffeeMachine('steel','350W','Kyiv')
+# bosch=Blender('strong steel','280W','Odessa')
+# rowenta=MeatGrinder('steel and plastic','200W','Lviv')
+# print(astoria)
+# print(astoria.check_price())
+# astoria.incr_price()
+# print(astoria.check_price())
+# print(astoria.paramet())
+# print(astoria.types_of_pods)
+# astoria.change_types_of_pods('20')
+# print(astoria.types_of_pods)
+# astoria.incr_tank_capacity()
+# print(astoria.tank_capacity)
+# print(bosch.blending_speed)
+# bosch.chan_speed('4')
+# print(bosch.check_speed())
+# bosch.decr_capacity()
+# print(bosch.capacity)
+# bosch.decr_capacity()
+# print(bosch.capacity)
+# print(rowenta)
+# rowenta.change_weight('10')
+# print(rowenta.item_weight)
+# rowenta.sale()
+# print(rowenta.check_price())
+
+'''Задание 2
+Создайте класс Ship, который содержит информацию
+о корабле.
+С помощью механизма наследования, реализуйте
+класс Frigate (содержит информацию о фрегате), класс
+Destroyer (содержит информацию об эсминце), класс
+Cruiser (содержит информацию о крейсере).
+Каждый из классов должен содержать необходимые
+для работы методы.'''
+
+# class Ship:
+#     rocket = 5
+#
+#     def __init__(self, speed, crew, tonnage, engine):
+#         self.speed = speed
+#         speed=int
+#         self.crew = crew
+#         crew=int
+#         self.tonnage = tonnage
+#         tonnage=int
+#         self.engine = engine
+#         engine=int
+#
+#     def __str__(self):
+#         return f'Maximum speed: {self.speed}, Maximum crew: {self.crew},' \
+#                f'The cargo capacity: {self.tonnage},' \
+#                f' The power of engine: {self.engine}'
+#     def check_rockets(self):
+#         return f'Tne number of rockets: {self.rocket}'
+#
+# class Frigate(Ship):
+#     def change_rocket(self, new_rocket):
+#         self.rocket = new_rocket
+#
+#
+# class Destroyer(Ship):
+#     def upgrade_crew(self):
+#         self.crew += 20
+#     def upgrade_engine(self):
+#         self.engine += 50
+#
+#
+# class Cruiser(Ship):
+#     def renovation(self):
+#         self.speed += 30
+#         self.tonnage += 200
+#         self.rocket += 2
+#         self.crew += 5
+#         return print('Parameters after renovation')
+#
+#     def upgrade_engine(self):
+#         self.engine += 200
+# kalibr = Frigate(25, 50, 850, 1000)
+#
+# print(kalibr.check_rockets())
+# kalibr.change_rocket(10)
+# print(kalibr.check_rockets())
+# onix=Destroyer(30,60, 900,1500)
+# print(onix)
+# onix.upgrade_crew()
+# print(onix)
+# onix.upgrade_engine()
+# print(onix)
+# redut=Cruiser(40,70,1200,2000)
+# print(redut)
+# redut.upgrade_engine()
+# redut.renovation()
+# print(redut.check_rockets())
+# print(redut)
+
+
+'''Задание 3
+Запрограммируйте класс Money (объект класса оперирует одной валютой) для работы с деньгами.
+В классе должны быть предусмотрены поле для хранения целой части денег (доллары, евро, гривны и т.д.) и
+поле для хранения копеек (центы, евроценты, копейки и т.д.).
+Реализовать методы для вывода суммы на экран, задания значений для частей. '''
+
+class Money:
+    currency='USD'
+    def __init__(self,banknote,coin):
+        # self.currency=currency
+        self.banknote = banknote
+        self.coin = coin
+    def __str__(self):
+        return f'{self.banknote}.{self.coin} {self.currency}'
+amount=Money(20,30)
+print(amount)
