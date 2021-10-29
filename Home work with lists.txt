@@ -1,0 +1,73 @@
+'''Два списка целых заполняются случайными числами.
+Необходимо:
+■ Сформировать третий список, содержащий элементы
+обоих списков;
+■ Сформировать третий список, содержащий элементы
+обоих списков без повторений;
+■ Сформировать третий список, содержащий элементы
+общие для двух списков;
+■ Сформировать третий список, содержащий только
+уникальные элементы каждого из списков;
+■ Сформировать третий список, содержащий только
+минимальное и максимальное значение каждого из
+списков.'''
+from random import randint
+first_random = [randint(1,20) for i in range(10)]
+second_random = [randint(1,20) for i in range(10)]
+third_random = first_random + second_random
+
+print(third_random)
+
+#без повторений
+third_random = []
+for i in first_random+second_random:
+    if i not in third_random:
+        third_random.append(i)
+print(third_random)
+
+
+#общие
+third_random = []
+for i in first_random:
+    for j in second_random:
+        if i == j:
+            third_random.append(i)
+third_random = list(set(third_random))
+print(third_random)
+
+#уникальные элементы
+third_random = []
+part1 = []
+for i in first_random:
+    if i not in second_random:
+        part1.append(i)
+        part1 = list(set(part1))
+
+part2 = []
+for i in second_random:
+    if i not in first_random:
+        part2.append(i)
+        part1 = list(set(part2))
+print(part1+part2)
+# min max
+
+max = first_random[0]
+min = first_random[0]
+for i in range(len(first_random)):
+    if max < first_random[i]:
+        max = first_random[i]
+    if min > first_random[i]:
+        min = first_random[i]
+
+max1 = second_random[0]
+min1 = second_random[0]
+for i in range(len(second_random)):
+    if max1 < second_random[i]:
+        max1 = second_random[i]
+    if min1 > second_random[i]:
+        min1 = second_random[i]
+third_random = [max,min,max1,min1]
+print(third_random)
+
+
+
